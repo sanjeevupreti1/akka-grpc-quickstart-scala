@@ -1,31 +1,19 @@
-//#service-request-reply
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "com.example.helloworld";
-option java_outer_classname = "HelloWorldProto";
+option java_package = "com.example.dataimport";
+option java_outer_classname = "DataImportProto";
 
-// The greeting service definition.
-service GreeterService {
+service DataImportService {
     // Sends a greeting
-    rpc SayHello (HelloRequest) returns (HelloReply) {}
-    //#service-request-reply
-    //#service-stream
-    // The stream of incoming HelloRequest messages are
-    // sent out as corresponding HelloReply. From
-    // all clients to all clients, like a chat room.
-    rpc SayHelloToAll (stream HelloRequest) returns (stream HelloReply) {}
-    //#service-stream
-    //#service-request-reply
+    rpc import (SourceAttributes) returns (Response) {}
 }
 
-// The request message containing the user's name.
-message HelloRequest {
-    string name = 1;
+message SourceAttributes {
+    string location = 1;
 }
 
-// The response message containing the greetings
-message HelloReply {
-    string message = 1;
+message Response {
+    string adaLocation = 1;
 }
-//#service-request-reply
+
